@@ -1,0 +1,38 @@
+security:
+  key: qBTmv4oXFFR2GwjexDJ4t6fsIUIUhhXqlktXjXdkcyygs8nPVEwMfo29VDRRepYDVV5IkIxBMzr7OEHXEHd37w==
+
+spring:
+  application:
+    name: auth
+
+  datasource:
+    url: jdbc:postgresql://localhost:6432/auth
+    username: admin
+    password: 123
+    driver-class-name: org.postgresql.Driver
+
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath*:database/initDB.sql
+#      data-locations: classpath*:database/populateDB.sql
+
+  jpa:
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+#    hibernate:
+#      ddl-auto: update
+
+#  security:
+#    user:
+#      password: password
+
+server:
+  port: 8080
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
