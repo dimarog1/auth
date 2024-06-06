@@ -8,12 +8,13 @@ import java.sql.Timestamp
 data class Session(
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     var id: Int = 0,
 
-    @Column(name = "user_id")
-    var userId: Int = 0,
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    var user: User? = null,
 
     @Column(name = "token")
     var token: String = "",

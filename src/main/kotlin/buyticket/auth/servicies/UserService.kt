@@ -2,13 +2,17 @@ package buyticket.auth.servicies
 
 import buyticket.auth.repositories.UserRepository
 import org.springframework.data.repository.findByIdOrNull
+import org.springframework.security.core.userdetails.User
+import org.springframework.security.core.userdetails.UserDetails
+import org.springframework.security.core.userdetails.UserDetailsService
+import org.springframework.security.core.userdetails.UsernameNotFoundException
 import org.springframework.stereotype.Service
 
 
 @Service
-class UserService(private val userRepository: UserRepository) {
+class UserService(private val userRepository: UserRepository) : UserDetailsService {
 
-    fun findById(id: Int): buyticket.auth.models.User? {
+    fun findById(id: Long): buyticket.auth.models.User? {
         return userRepository.findByIdOrNull(id)
     }
 
@@ -26,5 +30,15 @@ class UserService(private val userRepository: UserRepository) {
 
     fun save(user: buyticket.auth.models.User): buyticket.auth.models.User {
         return userRepository.save(user)
+    }
+
+    override fun loadUserByUsername(email: String?): UserDetails {
+        if (email == null) {
+            throw UsernameNotFoundException("There is no such user")
+        }
+
+        val user = userRepository.findByEmail(email) ?: throw UsernameNotFoundException("There is no such user")
+
+        return User(user.email, user.password, emptyList())
     }
 }

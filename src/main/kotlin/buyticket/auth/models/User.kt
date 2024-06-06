@@ -8,7 +8,7 @@ import java.sql.Timestamp
 data class User(
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     var id: Int = 0,
 

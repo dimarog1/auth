@@ -1,5 +1,5 @@
-security:
-  key: qBTmv4oXFFR2GwjexDJ4t6fsIUIUhhXqlktXjXdkcyygs8nPVEwMfo29VDRRepYDVV5IkIxBMzr7OEHXEHd37w==
+jwt:
+  secret: 6c3cf93a5c2988f5cace02954e9fe7a6e02089cebdc196564361e93ab8f1d62a
 
 spring:
   application:
@@ -19,14 +19,10 @@ spring:
 
   jpa:
     database: postgresql
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-    show-sql: true
-#    hibernate:
-#      ddl-auto: update
-
-#  security:
-#    user:
-#      password: password
+    properties.hibernate:
+      show_sql: true
+      format_sql: true
+      dialect: org.hibernate.dialect.PostgreSQLDialect
 
 server:
   port: 8080
