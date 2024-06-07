@@ -10,6 +10,10 @@ class SessionService(private val sessionRepository: SessionRepository) {
         return sessionRepository.findByUserId(userId)
     }
 
+    fun findByToken(token: String) : buyticket.auth.models.Session? {
+        return sessionRepository.findByToken(token);
+    }
+
     fun save(session: buyticket.auth.models.Session): buyticket.auth.models.Session {
         return sessionRepository.save(session)
     }

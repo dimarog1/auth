@@ -10,3 +10,7 @@ data class RegisterDto(
     val password: String,
     val email: String,
 )
+
+data class UserDto(
+    val token: String,
+)

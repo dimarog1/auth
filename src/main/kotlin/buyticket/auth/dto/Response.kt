@@ -18,3 +18,11 @@ data class RegisterResponseDto(
     val code: Int,
     val message: String,
 )
+
+data class UserResponseDto(
+    val code: Int,
+    val message: String,
+    val nickName: String,
+    val email: String,
+    val id: Int,
+)
