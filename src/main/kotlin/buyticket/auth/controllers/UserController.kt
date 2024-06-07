@@ -2,7 +2,6 @@ package buyticket.auth.controllers
 
 import buyticket.auth.dto.ApiException
 import buyticket.auth.dto.UserResponseDto
-import buyticket.auth.servicies.SessionService
 import buyticket.auth.servicies.UserService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
